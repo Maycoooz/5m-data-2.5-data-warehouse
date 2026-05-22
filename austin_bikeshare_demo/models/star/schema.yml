@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_bike
+    description: "Dimension Table for bike."
+    columns:
+      - name: bike_id
+        description: "The Primary Key for this table."
+        tests:
+          - unique
+          - not_null
+  
+  - name: dim_station
+    description: "Dimension Table for station."
+    columns:
+      - name: station_id
+        description: "The Primary Key for this table."
+        tests:
+          - unique
+          - not_null
+      
