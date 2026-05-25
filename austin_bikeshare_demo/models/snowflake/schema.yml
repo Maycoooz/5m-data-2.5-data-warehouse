@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_council_district
+    description: "Dim table for council_district (snowflake)"
+    columns:
+      - name: council_district
+        description: "Primary Key for dim_council_district"
+        tests:
+          - unique
+          - not_null
+  
+  - name: dim_station_snowflake
+    description: "Dim table for station (snowflake)"
+    columns:
+      - name: station_id
+        description: "Primary Key for dim_station_snowflake"
+        tests:
+          - unique
+          - not_null
+      
+      - name: council_district
+        description: "Foreign Key for dim_station_snowflake"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_council_district')
+                field: council_district

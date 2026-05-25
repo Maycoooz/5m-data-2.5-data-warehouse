@@ -4,4 +4,5 @@ SELECT DISTINCT
     status,
     location,
     address
-FROM {{ source('austin_bikeshare', 'bikeshare_stations')}}
+FROM {{ ref('station_snapshot')}}
+WHERE CURRENT_TIMESTAMP > dbt_valid_from AND dbt_valid_to IS NULL
