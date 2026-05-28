@@ -10,7 +10,7 @@ SELECT
     s.status,
     s.location,
     s.address,
-    AVG(t.duration_minutes) AS avg_duration
+    ROUND(AVG(t.duration_minutes) * 60, 2) AS avg_duration_seconds
 FROM current_stations AS s
 LEFT JOIN {{ source('austin_bikeshare', 'bikeshare_trips') }} AS t
 ON t.start_station_id = s.station_id
